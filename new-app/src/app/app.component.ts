@@ -1,27 +1,27 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  template: `<h1>Firebase Data Test</h1>
+             <pre>{{ data | json }}</pre>`,
 })
-export class AppComponent implements OnInit{
-  title = 'new-app';
+export class AppComponent implements OnInit {
+  data: any;
 
-  constructor(private http: HttpClient){}
-  ngOnInit(): void {
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
     this.http
-      .get(
-        'https://project-angular-48822-default-rtdb.firebaseio.com/.json'
-      )
-      .subscribe((x:any)=>{
-        console.log(x.post)
-      })
+      .get('https://project-angular-48822-default-rtdb.firebaseio.com/.json')
+      .subscribe({
+        next: (res) => {
+          this.data = res;
+          console.log('Данни от Firebase:', res);
+        },
+        error: (err) => {
+          console.error('Грешка при зареждане:', err);
+        }
+      });
   }
-
-
 }
