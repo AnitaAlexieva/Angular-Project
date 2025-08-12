@@ -1,0 +1,32 @@
+
+.app-footer {
+  background-color: #333;
+  color: #fff;
+  padding: 15px 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin-top: 40px;
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.footer-content p {
+  margin: 5px 0;
+}
+
+.footer-content nav {
+  margin-top: 8px;
+}
+
+.footer-content a {
+  color: #ddd;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer-content a:hover {
+  color: #4cafef;
+}
