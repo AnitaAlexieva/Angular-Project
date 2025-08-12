@@ -8,13 +8,23 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './pages/home/home.component';
+import { RecipesComponent } from './pages/recipes/recipes.component';
+import { RecipeDetailComponent } from './pages/recipe-detail/recipe-detail.component';
+import { RecipeFormComponent } from './pages/recipe-form/recipe-form.component';
+import { AboutComponent } from './pages/about/about.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ProfileComponent } from './user/profile/profile.component';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, RecipesComponent, RecipeDetailComponent, RecipeFormComponent, AboutComponent, LoginComponent, RegisterComponent, ProfileComponent, ErrorPageComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([]),
+    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     FormsModule
   ],

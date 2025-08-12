@@ -1,0 +1,16 @@
+<h1>Протеинови рецепти</h1>
+
+<form (ngSubmit)="addRecipe()">
+  <input type="text" [(ngModel)]="newName" name="name" placeholder="Име на рецепта" required>
+  <input type="number" [(ngModel)]="newProtein" name="protein" placeholder="Протеин (g)" required>
+  <button type="submit">{{ editId ? 'Запази' : 'Добави' }}</button>
+  <button type="button" *ngIf="editId" (click)="cancelEdit()">Откажи</button>
+</form>
+
+<ul>
+  <li *ngFor="let recipe of recipes | keyvalue">
+    {{ recipe.value.name }} - {{ recipe.value.protein }}g
+    <button (click)="editRecipe(recipe.key, recipe.value)">Редактирай</button>
+    <button (click)="deleteRecipe(recipe.key)">Изтрий</button>
+  </li>
+</ul>
