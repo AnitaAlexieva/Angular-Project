@@ -1,27 +1,70 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { FirebaseService } from './services/firebase.service';
+import { Recipe } from './types/Recipe';
 
 @Component({
   selector: 'app-root',
-  template: `<h1>Firebase Data Test</h1>
-             <pre>{{ data | json }}</pre>`,
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  data: any;
+  recipes: Record<string, Recipe> = {};
 
-  constructor(private http: HttpClient) {}
+  // Полета за формата
+  newName: string = '';
+  newProtein: number | null = null;
+
+  // За редакция
+  editId: string | null = null;
+
+  constructor(private firebaseService: FirebaseService) {}
 
   ngOnInit() {
-    this.http
-      .get('https://project-angular-48822-default-rtdb.firebaseio.com/.json')
-      .subscribe({
-        next: (res) => {
-          this.data = res;
-          console.log('Данни от Firebase:', res);
-        },
-        error: (err) => {
-          console.error('Грешка при зареждане:', err);
-        }
+    this.loadRecipes();
+  }
+
+  loadRecipes() {
+    this.firebaseService.getRecipes().subscribe((res) => {
+      this.recipes = res || {};
+    });
+  }
+
+  addRecipe() {
+    if (!this.newName || this.newProtein === null) return;
+
+    const recipe: Recipe = {
+      name: this.newName,
+      protein: this.newProtein
+    };
+
+    if (this.editId) {
+      this.firebaseService.updateRecipe(this.editId, recipe).subscribe(() => {
+        this.cancelEdit();
+        this.loadRecipes();
       });
+    } else {
+      this.firebaseService.addRecipe(recipe).subscribe(() => {
+        this.newName = '';
+        this.newProtein = null;
+        this.loadRecipes();
+      });
+    }
+  }
+
+  editRecipe(id: string, recipe: Recipe) {
+    this.editId = id;
+    this.newName = recipe.name;
+    this.newProtein = recipe.protein;
+  }
+
+  cancelEdit() {
+    this.editId = null;
+    this.newName = '';
+    this.newProtein = null;
+  }
+
+  deleteRecipe(id: string) {
+    this.firebaseService.deleteRecipe(id).subscribe(() => {
+      this.loadRecipes();
+    });
   }
 }
