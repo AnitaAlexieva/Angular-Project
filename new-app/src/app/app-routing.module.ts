@@ -10,6 +10,7 @@ import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { ProfileComponent } from './user/profile/profile.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent},
+  { path: 'profile/edit', component: EditProfileComponent },
   { path: '**', component: ErrorPageComponent},
 ];
 

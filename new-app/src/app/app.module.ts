@@ -18,9 +18,10 @@ import { RegisterComponent } from './user/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProfileComponent } from './user/profile/profile.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, RecipesComponent, RecipeDetailComponent, RecipeFormComponent, AboutComponent, LoginComponent, RegisterComponent, ProfileComponent, ErrorPageComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, RecipesComponent, RecipeDetailComponent, RecipeFormComponent, AboutComponent, LoginComponent, RegisterComponent, ProfileComponent, ErrorPageComponent, EditProfileComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

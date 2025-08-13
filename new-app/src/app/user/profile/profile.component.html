@@ -1,1 +1,44 @@
-<p>profile works!</p>
+<div class="profile-container">
+  <div class="profile-header">
+    <img class="profile-avatar" src="https://i.pravatar.cc/150?img=12" alt="User Avatar" />
+    <div class="profile-info">
+      <h2>John Doe</h2>
+      <p>Email: john@example.com</p>
+      <p>Member since: Jan 2024</p>
+      <div class="profile-actions">
+        <a class="btn edit-btn" routerLink="/profile/edit">Edit Profile</a>
+        <a class="btn logout-btn">Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">My Recipes</h3>
+  <div class="recipe-list">
+    <div class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Recipe" />
+      <div class="recipe-content">
+        <h4>High Protein Chicken</h4>
+        <p>Protein: 35g | Calories: 400kcal</p>
+        <a [routerLink]="['/recipe', '1']" class="read-more-btn">View</a>
+      </div>
+    </div>
+
+    <div class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&q=80" alt="Recipe" />
+      <div class="recipe-content">
+        <h4>Fitness Salad</h4>
+        <p>Protein: 20g | Calories: 250kcal</p>
+        <a [routerLink]="['/recipe', '2']" class="read-more-btn">View</a>
+      </div>
+    </div>
+
+    <div class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&q=80" alt="Recipe" />
+      <div class="recipe-content">
+        <h4>Fitness Salad</h4>
+        <p>Protein: 20g | Calories: 250kcal</p>
+        <a [routerLink]="['/recipe', '2']" class="read-more-btn">View</a>
+      </div>
+    </div>
+  </div>
+</div>
