@@ -1,0 +1,41 @@
+.error-page {
+  text-align: center;
+  padding: 4rem 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cake-slice img {
+  width: 250px;
+  animation: tilt 1.5s infinite ease-in-out;
+}
+
+@keyframes tilt {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.error-page h1 {
+  font-size: 4.5rem;
+  font-weight: bold;
+  color: #e74c3c;
+  margin: 1rem 0;
+}
+
+.error-page p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.error-page .btn {
+  background: #e74c3c;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.error-page .btn:hover {
+  background: #c0392b;
+}
