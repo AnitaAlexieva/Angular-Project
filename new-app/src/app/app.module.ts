@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { environment } from './environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -13,21 +12,20 @@ import { RecipesComponent } from './pages/recipes/recipes.component';
 import { RecipeDetailComponent } from './pages/recipe-detail/recipe-detail.component';
 import { RecipeFormComponent } from './pages/recipe-form/recipe-form.component';
 import { AboutComponent } from './pages/about/about.component';
-import { LoginComponent } from './user/login/login.component';
-import { RegisterComponent } from './user/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ProfileComponent } from './user/profile/profile.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
-import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { UserModule } from './user/user.module';
+import { EmailDirective } from './shared/directives/email.directive';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, RecipesComponent, RecipeDetailComponent, RecipeFormComponent, AboutComponent, LoginComponent, RegisterComponent, ProfileComponent, ErrorPageComponent, EditProfileComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, RecipesComponent, RecipeDetailComponent, RecipeFormComponent, AboutComponent, ErrorPageComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    FormsModule
+    FormsModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
