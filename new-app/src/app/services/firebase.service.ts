@@ -17,9 +17,8 @@ export class FirebaseService {
     return this.http.get<Record<string, Recipe>>(`${this.baseUrl}/recipes.json`);
   }
 
-  // Добавяне на рецепта
-  addRecipe(recipe: Recipe): Observable<any> {
-    return this.http.post(`${this.baseUrl}/recipes.json`, recipe);
+  getRecipeById(id: string): Observable<Recipe> {
+    return this.http.get<Recipe>(`${this.baseUrl}/recipes/${id}.json`);
   }
 
   // Редактиране на рецепта
