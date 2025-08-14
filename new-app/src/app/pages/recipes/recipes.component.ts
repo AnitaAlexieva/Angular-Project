@@ -7,8 +7,8 @@ import { Recipe } from 'src/app/types/Recipe';
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.css']
 })
-export class RecipesComponent implements OnInit{
-recipes: Record<string, Recipe> = {};
+export class RecipesComponent implements OnInit {
+  recipes: Recipe[] = [];
 
   // Полета за формата
   newName: string = '';
@@ -17,15 +17,31 @@ recipes: Record<string, Recipe> = {};
   // За редакция
   editId: string | null = null;
 
-  constructor(private firebaseService: FirebaseService) {}
+  constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit() {
     this.loadRecipes();
   }
 
+  // SoftUni 
+  // loadRecipes(){
+  //   this.firebaseService.getRecipes().subscribe((r) =>{
+  //     console.log(r)
+  //   })
+  // }
+
   loadRecipes() {
     this.firebaseService.getRecipes().subscribe((res) => {
-      this.recipes = res || {};
+      if (res) {
+        // res е Record<string, Recipe>
+        this.recipes = Object.keys(res).map(key => ({
+          id: key,           // добавяме id-то
+          ...res[key]        // останалите данни на рецептата
+        }));
+      } else {
+        this.recipes = [];
+      }
+      console.log('Loaded recipes:', this.recipes);
     });
   }
 

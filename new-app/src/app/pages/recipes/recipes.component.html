@@ -1,49 +1,12 @@
-
-<!-- 
-<form (ngSubmit)="addRecipe()">
-  <input type="text" [(ngModel)]="newName" name="name" placeholder="Име на рецепта" required>
-  <input type="number" [(ngModel)]="newProtein" name="protein" placeholder="Протеин (g)" required>
-  <button type="submit">{{ editId ? 'Запази' : 'Добави' }}</button>
-  <button type="button" *ngIf="editId" (click)="cancelEdit()">Откажи</button>
-</form>
-
-<ul>
-  <li *ngFor="let recipe of recipes | keyvalue">
-    {{ recipe.value.name }} - {{ recipe.value.protein }}g
-    <button (click)="editRecipe(recipe.key, recipe.value)">Редактирай</button>
-    <button (click)="deleteRecipe(recipe.key)">Изтрий</button>
-  </li>
-</ul> -->
-<div class="all-recipes">
-
-</div>
 <h1>All Protein Recipes</h1>
 
 <div class="recipe-list">
-  <div class="recipe-card">
-    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="High Protein Meal" />
+  <div class="recipe-card" *ngFor="let recipe of recipes">
+    <img src="{{recipe.imageUrl}}" alt="High Protein Meal" />
     <div class="recipe-content">
-      <h3>High Protein Chicken</h3>
-      <p>Protein: 35g | Calories: 400kcal</p>
-       <a [routerLink]="['/recipe', 'id-here']" class="read-more-btn">Read More</a>
-    </div>
-  </div>
-
-  <div class="recipe-card">
-    <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&q=80" alt="Fitness Community" />
-    <div class="recipe-content">
-      <h3>Fitness Community Salad</h3>
-      <p>Protein: 20g | Calories: 250kcal</p>
-       <a [routerLink]="['/recipe', 'id-here']" class="read-more-btn">Read More</a>
-    </div>
-  </div>
-
-  <div class="recipe-card">
-    <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&q=80" alt="Fitness Community" />
-    <div class="recipe-content">
-      <h3>Fitness Community Salad</h3>
-      <p>Protein: 20g | Calories: 250kcal</p>
-       <a [routerLink]="['/recipe', 'id-here']" class="read-more-btn">Read More</a>
+      <h3>{{recipe.title}}</h3>
+      <p>Protein: {{recipe.protein}}g | Calories: {{recipe.calories}}kcal</p>
+       <a [routerLink]="['/recipes', recipe.id]" class="read-more-btn">Read More</a>
     </div>
   </div>
 </div>
