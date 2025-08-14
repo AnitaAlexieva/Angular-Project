@@ -5,8 +5,15 @@
           <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
           <li><a routerLink="/recipes" routerLinkActive="active">Recipes</a></li>
           <li><a routerLink="/about" routerLinkActive="active">About</a></li>
-          <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
-          <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
+          <ul class="guestNav" *ngIf="!isLoggedIn">
+            <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+            <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
+          </ul>
+          <ul class="userNav" *ngIf="isLoggedIn">
+            <li><a routerLink="/recipes/add" routerLinkActive="active">Post Recipe</a></li>
+            <li><a routerLink="/profile" routerLinkActive="active">{{username}}'s Profile</a></li>
+            <li><a (click)="logout()"  routerLinkActive="active">Logout</a></li>
+          </ul>
         </ul>
     </div>
 </nav>

@@ -9,7 +9,17 @@ nav.navbar {
     align-items: center;
     background-color: #f0e4f1;
 }
+.guestNav,
+.userNav{
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    padding: 0;
+}
 
+.guestNav li a:hover{
+    cursor: pointer;
+}
 .nav,
 .logo {
     list-style: none;
