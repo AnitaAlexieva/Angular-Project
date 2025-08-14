@@ -1,9 +1,9 @@
 <div class="auth-container">
   <h2>Login</h2>
   <form>
-    <input type="email" placeholder="Email" required />
-    <input type="password" placeholder="Password" required />
-    <button type="submit">Log In</button>
+    <input type="email" placeholder="Email" required #inputEmail />
+    <input type="password" placeholder="Password" required #inputPassword />
+    <button (click)="login($event, inputEmail.value, inputPassword.value)">Log In</button>
   </form>
   <p>Don't have an account? <a href="/register">Register here</a></p>
 </div>
