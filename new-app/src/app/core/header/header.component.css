@@ -17,7 +17,7 @@ nav.navbar {
     padding: 0;
 }
 
-.guestNav li a:hover{
+.userNav li a:hover{
     cursor: pointer;
 }
 .nav,
