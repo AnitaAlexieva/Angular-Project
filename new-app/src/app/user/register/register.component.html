@@ -1,17 +1,43 @@
 <div class="auth-container">
   <h2>Register</h2>
-  <form>
-    <input type="text" placeholder="Username" required />
-    <input type="email" placeholder="Email" required />
-    <input type="password" placeholder="Password" required />
-    <input type="password" placeholder="Confirm Password" required />
-    <button type="submit">Register</button>
+  <form #form="ngForm" (ngSubmit)="register(form)">
+  <input type="text" placeholder="Username" name="username" ngModel #inputUsername="ngModel" required minlength="3"/>
+      <ng-container *ngIf="inputUsername.touched">
+      <p class="error" *ngIf="inputUsername.errors?.['required']">
+        Username is required!
+      </p>
+      <p class="error" *ngIf="inputUsername.errors?.['minlength']">
+        Username must be at least 3 characters!
+      </p>
+    </ng-container>
+    <input type="email" name="email" placeholder="Email" ngModel #inputEmail="ngModel" required [appEmail]="domains" />
+       <ng-container *ngIf="inputEmail.touched">
+      <p class="error" *ngIf="inputEmail.errors?.['required']">
+        Email is required!
+      </p>
+      <p class="error" *ngIf="inputEmail.errors?.['emailValidator']">
+        Email is not valid!
+      </p>
+    </ng-container>
+    <input type="password" name="password" ngModel #inputPass="ngModel" placeholder="Password" required minlength="5"/>
+    <ng-container *ngIf="inputPass.touched">
+      <p *ngIf="inputPass.errors?.['required']" class="error">
+        Password is required!
+      </p>
+      <p class="error" *ngIf="inputPass.errors?.['minlength']">
+        Password must be at least 5 characters!
+      </p>
+    </ng-container>
     <input type="password" name="rePassword" ngModel #inputRePass="ngModel" placeholder="Confirm Password" required [appMatchPassword]="inputPass.value" />
      <ng-container *ngIf="inputRePass.touched">
+      <p *ngIf="inputRePass.errors?.['required']" class="error">
+        Password is required!
+      </p>
       <p class="error" *ngIf="inputRePass.errors?.['matchPassword']">
         Passwords don't match!
       </p>
     </ng-container>
+    <button [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : 'blue'}">Login</button>
   </form>
   <p>Already have an account? <a href="/login">Login here</a></p>
 </div>

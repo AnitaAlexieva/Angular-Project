@@ -11,6 +11,17 @@
   text-align: center;
 }
 
+p.error {
+    text-align: left;
+    border-radius: 0.3em;
+    color: red !important;
+    margin: 0 !important;
+}
+
+.input-error {
+    border-left-color: red !important;
+}
+
 .auth-container h2 {
   color: #6a1b9a;
   margin-bottom: 1.5rem;
