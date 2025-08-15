@@ -20,9 +20,9 @@
       <li *ngFor="let step of recipe.steps">{{ step }}</li>
     </ol>
 
-    <div class="recipe-actions">
-      <button class="btn edit-btn">Edit</button>
-      <button class="btn delete-btn">Delete</button>
+    <div class="recipe-actions" *ngIf="isLoggedIn">
+      <button class="btn edit-btn" *ngIf="ownerId === userId">Edit</button>
+      <button class="btn delete-btn" *ngIf="ownerId === userId">Delete</button>
     </div>
   </div>
 </div>

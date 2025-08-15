@@ -7,5 +7,5 @@ export interface Recipe {
   prepTime?: string;
   description?: string;
   steps?: string[];
-  authId: string
+  ownerId: string
 }
