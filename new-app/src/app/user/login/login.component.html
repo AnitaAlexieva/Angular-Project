@@ -1,9 +1,28 @@
 <div class="auth-container">
   <h2>Login</h2>
-  <form>
-    <input type="email" placeholder="Email" required #inputEmail />
-    <input type="password" placeholder="Password" required #inputPassword />
-    <button (click)="login($event, inputEmail.value, inputPassword.value)">Log In</button>
+  <form #form="ngForm" (ngSubmit)="login(form)">
+    <input type="email" name="email" placeholder="Email" ngModel #inputEmail="ngModel" required [appEmail]="domains" />
+
+    <ng-container *ngIf="inputEmail.touched">
+      <p class="error" *ngIf="inputEmail.errors?.['required']">
+        Email is required!
+      </p>
+      <p class="error" *ngIf="inputEmail.errors?.['emailValidator']">
+        Email is not valid!
+      </p>
+    </ng-container>
+    <input type="password" name="password" placeholder="Password" ngModel #inputPassword="ngModel" required minlength="5"/>
+
+    <ng-container *ngIf="inputPassword.touched">
+      <p *ngIf="inputPassword.errors?.['required']" class="error">
+        Password is required!
+      </p>
+      <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+        Password must be at least 5 characters!
+      </p>
+    </ng-container>
+
+    <button [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? 'grey' : 'blue'}">Login</button>
   </form>
   <p>Don't have an account? <a href="/register">Register here</a></p>
 </div>
