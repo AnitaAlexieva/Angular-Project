@@ -10,7 +10,6 @@ import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { ProfileComponent } from './user/profile/profile.component';
-import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { GuestGuard } from './core/guards/guest.guard';
 
@@ -24,7 +23,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate:[GuestGuard] },
   { path: 'register', component: RegisterComponent, canActivate:[GuestGuard] },
   { path: 'profile', component: ProfileComponent, canActivate:[AuthGuard]},
-  { path: 'profile/edit', component: EditProfileComponent, canActivate:[AuthGuard] },
   { path: '**', component: ErrorPageComponent},
 ];
 
