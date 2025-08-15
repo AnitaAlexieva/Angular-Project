@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmailDirective } from './directives/email.directive';
+import { MatchPasswordDirective } from './directives/match-password.directive';
 
 
 
 @NgModule({
-  declarations: [EmailDirective],
+  declarations: [EmailDirective, MatchPasswordDirective],
   imports: [
     CommonModule
   ],
-  exports:[EmailDirective]
+  exports:[EmailDirective, MatchPasswordDirective]
 })
 export class SharedModule { }

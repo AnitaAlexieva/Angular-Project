@@ -6,6 +6,12 @@
     <input type="password" placeholder="Password" required />
     <input type="password" placeholder="Confirm Password" required />
     <button type="submit">Register</button>
+    <input type="password" name="rePassword" ngModel #inputRePass="ngModel" placeholder="Confirm Password" required [appMatchPassword]="inputPass.value" />
+     <ng-container *ngIf="inputRePass.touched">
+      <p class="error" *ngIf="inputRePass.errors?.['matchPassword']">
+        Passwords don't match!
+      </p>
+    </ng-container>
   </form>
   <p>Already have an account? <a href="/login">Login here</a></p>
 </div>

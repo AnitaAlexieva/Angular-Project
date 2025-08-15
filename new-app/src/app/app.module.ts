@@ -15,7 +15,6 @@ import { AboutComponent } from './pages/about/about.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { UserModule } from './user/user.module';
-import { EmailDirective } from './shared/directives/email.directive';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, RecipesComponent, RecipeDetailComponent, RecipeFormComponent, AboutComponent, ErrorPageComponent],
