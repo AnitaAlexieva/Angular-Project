@@ -14,6 +14,16 @@
   gap: 1.5rem;
 }
 
+p.error {
+    text-align: left;
+    border-radius: 0.3em;
+    color: red !important;
+    margin: 0 !important;
+}
+
+.input-error {
+    border-left-color: red !important;
+}
 .recipe-form h2 {
   text-align: center;
   margin-bottom: 0.5rem;
