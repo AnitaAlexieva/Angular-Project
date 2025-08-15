@@ -64,6 +64,23 @@ export class UserService {
     );
   }
 
+  getUserData(uid: string): Observable<User> {
+    return from(get(ref(db, 'users/' + uid))).pipe(
+      map(snapshot => snapshot.val() as User)
+    );
+  }
+
+  updateUser(uid: string, updatedData: Partial<User>): Observable<void> {
+    return from(update(ref(db, 'users/' + uid), updatedData)).pipe(
+      map(() => {
+        // Обновяваме и локално
+        this.user = { ...this.user, ...updatedData } as User;
+        localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+      })
+    );
+  }
+
+  logout() {
     this.user = null;
     localStorage.removeItem(this.USER_KEY);
   }

@@ -1,6 +1,6 @@
 <div class="profile-container" *ngIf="!showEditMode">
   <div class="profile-header">
-    <img class="profile-avatar" src="https://i.pravatar.cc/150?img=12" alt="User Avatar" />
+    <img class="profile-avatar" src="{{profileDetails.imageUrl}}" alt="User Avatar" />
     <div class="profile-info">
       <h2>{{profileDetails.username}}</h2>
       <p>Email: {{profileDetails.email}}</p>
@@ -48,7 +48,7 @@
   <form #form="ngForm">
     <div class="form-group">
       <label>Username</label>
-      <input type="text" placeholder="Enter your full name" name="username" #inputUsername="ngModel" [(ngModel)]="formModel.username" required minlength="3"/>
+      <input type="text" placeholder="Enter your full name" name="username" #inputUsername="ngModel" [(ngModel)]="profileDetails.username" required minlength="3"/>
        <ng-container *ngIf="inputUsername.touched">
       <p class="error" *ngIf="inputUsername.errors?.['required']">
         Username is required!
@@ -61,7 +61,7 @@
 
     <div class="form-group">
       <label>Email</label>
-      <input type="email" placeholder="Enter your email" name="email" #inputEmail="ngModel" [(ngModel)]="formModel.email" required [appEmail]="domains"/>
+      <input type="email" placeholder="Enter your email" name="email" #inputEmail="ngModel" [(ngModel)]="profileDetails.email" required [appEmail]="domains"/>
       <ng-container *ngIf="inputEmail.touched">
         <p class="error" *ngIf="inputEmail.errors?.['required']">
           Email is required!
@@ -74,17 +74,17 @@
 
     <div class="form-group">
       <label>Profile Image URL</label>
-      <input type="text" placeholder="Paste image link here" name="imageUrl" [(ngModel)]="formModel.imageUrl" />
+      <input type="text" placeholder="Paste image link here" name="imageUrl" [(ngModel)]="profileDetails.imageUrl" />
     </div>
 
     <div class="form-preview">
       <p>Preview:</p>
-      <img src="{{formModel.imageUrl}}" alt="Profile Preview" class="profile-avatar" />
+      <img src="{{profileDetails.imageUrl}}" alt="Profile Preview" class="profile-avatar" />
     </div>
 
     <div class="form-actions">
       <button class="save-btn" (click)="saveProfile(form)">Save</button>
-      <button class="cancel-btn" (click)="cancelEdit()">Cancel</button>
+      <button class="cancel-btn" (click)="cancelEdit($event)">Cancel</button>
     </div>
   </form>
 </div>

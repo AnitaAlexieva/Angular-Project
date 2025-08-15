@@ -1,39 +1,52 @@
-  import { Component } from '@angular/core';
-  import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { DOMAINS } from 'src/app/constants';
-  import { User } from 'src/app/types/User';
+import { User } from 'src/app/types/User';
+import { UserService } from 'src/app/services/user.service';
 
-  @Component({
-    selector: 'app-profile',
-    templateUrl: './profile.component.html',
-    styleUrls: ['./profile.component.css']
-  })
-  export class ProfileComponent {
-  domains=DOMAINS;
+@Component({
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
+})
+export class ProfileComponent implements OnInit {
+  domains = DOMAINS;
   showEditMode: boolean = false;
+  profileDetails: User = { username: '', email: '', imageUrl: '' };
 
-  profileDetails: User = {
-    username: 'Anitaaa',
-    email: 'anitaa@gmail.com',
-    imageUrl: 'https://i.pravatar.cc/150?img=12'
-  };
+  constructor(private userService: UserService) {}
 
-  formModel: User = { ...this.profileDetails }; // копие за формата
+  ngOnInit() {
+    if (this.userService.user?.uid) {
+      this.userService.getUserData(this.userService.user.uid).subscribe(user => {
+        this.profileDetails = user;
+      });
+    }
+  }
 
   onEdit(): void {
     this.showEditMode = true;
-    this.formModel = { ...this.profileDetails }; // reset на формата
   }
 
   saveProfile(form: NgForm) {
-    if (form.invalid) {
+    if (form.invalid || !this.userService.user?.uid) {
       return;
     }
-    this.profileDetails = { ...this.formModel }; // записваме само при Save
-    this.showEditMode = false;
+
+    this.userService.updateUser(this.userService.user.uid, this.profileDetails)
+      .subscribe(() => {
+        this.showEditMode = false;
+      });
   }
 
-  cancelEdit() {
+  cancelEdit(event: Event) {
+    event.preventDefault();
     this.showEditMode = false;
+    // връщаме данните от базата
+    if (this.userService.user?.uid) {
+      this.userService.getUserData(this.userService.user.uid).subscribe(user => {
+        this.profileDetails = user;
+      });
+    }
   }
 }
