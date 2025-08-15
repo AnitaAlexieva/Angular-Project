@@ -16,12 +16,15 @@ export class LoginComponent {
     private router:Router
   ){}
 
-  login(form:NgForm){
+login(form: NgForm) {
+  if (form.invalid) return;
 
-    if(form.invalid){
-      return
-    }
-    this.userService.login()
-    this.router.navigate(['/'])
-  }
+  const { email, password } = form.value;
+
+ this.userService.login(email, password).subscribe({
+  next: () => this.router.navigate(['/']),
+  error: err => console.error(err)
+});
+}
+
 }

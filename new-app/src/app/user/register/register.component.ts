@@ -10,17 +10,21 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-    domains = DOMAINS;
-    constructor(
-      private userService: UserService,
-      private router: Router
-    ){}
+  domains = DOMAINS;
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) { }
 
-    register(form:NgForm){
-      if(form.invalid){
-        return;
-      }
+  register(form: NgForm) {
+    if (form.invalid) return;
 
-      console.log('Само стойностите:', form.value);
-    }
-}
+    const { email, password, username } = form.value;
+
+    this.userService.register(email, password, username).subscribe({
+      next: user => this.router.navigate(['/']),
+      error: err => console.error(err)
+    });
+  }
+
+  }
