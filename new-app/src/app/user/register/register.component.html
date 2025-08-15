@@ -1,8 +1,8 @@
 <div class="auth-container">
   <h2>Register</h2>
   <form #form="ngForm" (ngSubmit)="register(form)">
-  <input type="text" placeholder="Username" name="username" ngModel #inputUsername="ngModel" required minlength="3"/>
-      <ng-container *ngIf="inputUsername.touched">
+    <input type="text" placeholder="Username" name="username" ngModel #inputUsername="ngModel" required minlength="3" />
+    <ng-container *ngIf="inputUsername.touched">
       <p class="error" *ngIf="inputUsername.errors?.['required']">
         Username is required!
       </p>
@@ -11,7 +11,7 @@
       </p>
     </ng-container>
     <input type="email" name="email" placeholder="Email" ngModel #inputEmail="ngModel" required [appEmail]="domains" />
-       <ng-container *ngIf="inputEmail.touched">
+    <ng-container *ngIf="inputEmail.touched">
       <p class="error" *ngIf="inputEmail.errors?.['required']">
         Email is required!
       </p>
@@ -19,7 +19,7 @@
         Email is not valid!
       </p>
     </ng-container>
-    <input type="password" name="password" ngModel #inputPass="ngModel" placeholder="Password" required minlength="5"/>
+    <input type="password" name="password" ngModel #inputPass="ngModel" placeholder="Password" required minlength="5" />
     <ng-container *ngIf="inputPass.touched">
       <p *ngIf="inputPass.errors?.['required']" class="error">
         Password is required!
@@ -28,8 +28,9 @@
         Password must be at least 5 characters!
       </p>
     </ng-container>
-    <input type="password" name="rePassword" ngModel #inputRePass="ngModel" placeholder="Confirm Password" required [appMatchPassword]="inputPass.value" />
-     <ng-container *ngIf="inputRePass.touched">
+    <input type="password" name="rePassword" ngModel #inputRePass="ngModel" placeholder="Confirm Password" required
+      [appMatchPassword]="inputPass.value" />
+    <ng-container *ngIf="inputRePass.touched">
       <p *ngIf="inputRePass.errors?.['required']" class="error">
         Password is required!
       </p>
