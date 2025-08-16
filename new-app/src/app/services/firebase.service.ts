@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Recipe } from '../types/Recipe';
 
 @Injectable({
@@ -12,7 +12,6 @@ export class FirebaseService {
 
   constructor(private http: HttpClient) { }
 
-  // Взимане на всички рецепти
   getRecipes(): Observable<Record<string, Recipe>> {
     return this.http.get<Record<string, Recipe>>(`${this.baseUrl}/recipes.json`);
   }
@@ -21,14 +20,11 @@ export class FirebaseService {
     return this.http.get<Recipe>(`${this.baseUrl}/recipes/${id}.json`);
   }
 
-  // Редактиране на рецепта
-  updateRecipe(id: string, recipe: Recipe): Observable<any> {
-    return this.http.put(`${this.baseUrl}/recipes/${id}.json`, recipe);
-  }
 
   addRecipe(recipe: Recipe): Observable<{ name: string }> {
-  // Firebase ще върне обект с генерирания ID като { name: string }
-  return this.http.post<{ name: string }>(`${this.baseUrl}/recipes.json`, recipe);
+    // Firebase ще върне обект с генерирания ID като { name: string }
+    return this.http.post<{ name: string }>(`${this.baseUrl}/recipes.json`, recipe);
+  }
   updateRecipe(id: string, recipe: Recipe): Observable<Recipe> {
     return this.http.put<Recipe>(`${this.baseUrl}/recipes/${id}.json`, recipe);
   }
@@ -36,20 +32,22 @@ export class FirebaseService {
   deleteRecipe(id: string): Observable<null> {
     return this.http.delete<null>(`${this.baseUrl}/recipes/${id}.json`);
   }
+ getRecipesByUser(userId: string): Observable<Recipe[]> {
+  return this.getRecipes().pipe(
+    map((recipesObj: Record<string, Recipe>) => {
+      const recipes: Recipe[] = [];
+
+      for (const key in recipesObj) {
+        if (recipesObj.hasOwnProperty(key)) {
+          recipes.push({ id: key, ...recipesObj[key] });
+        }
+      }
+
+      // филтрираме по ownerId
+      return recipes.filter(r => r.ownerId === userId);
+    })
+  );
+}
 }
 
-  // // Добавяне на рецепта
-  // addRecipe(recipe: Recipe): Observable<any> {
-  //   return this.http.post(`${this.baseUrl}/recipes.json`, recipe);
-  // }
 
-  // // Редактиране на рецепта
-  // updateRecipe(id: string, recipe: Recipe): Observable<any> {
-  //   return this.http.put(`${this.baseUrl}/recipes/${id}.json`, recipe);
-  // }
-
-  // // Изтриване на рецепта
-  // deleteRecipe(id: string): Observable<any> {
-  //   return this.http.delete(`${this.baseUrl}/recipes/${id}.json`);
-  // }
-}

@@ -13,30 +13,12 @@
 
   <h3 class="section-title">My Recipes</h3>
   <div class="recipe-list">
-    <div class="recipe-card">
-      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Recipe" />
+    <div class="recipe-card" *ngFor="let recipe of myRecipes">
+      <img src="{{recipe.imageUrl}}" alt="Recipe" />
       <div class="recipe-content">
-        <h4>High Protein Chicken</h4>
-        <p>Protein: 35g | Calories: 400kcal</p>
-        <a [routerLink]="['/recipe', '1']" class="read-more-btn">View</a>
-      </div>
-    </div>
-
-    <div class="recipe-card">
-      <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&q=80" alt="Recipe" />
-      <div class="recipe-content">
-        <h4>Fitness Salad</h4>
-        <p>Protein: 20g | Calories: 250kcal</p>
-        <a [routerLink]="['/recipe', '2']" class="read-more-btn">View</a>
-      </div>
-    </div>
-
-    <div class="recipe-card">
-      <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&q=80" alt="Recipe" />
-      <div class="recipe-content">
-        <h4>Fitness Salad</h4>
-        <p>Protein: 20g | Calories: 250kcal</p>
-        <a [routerLink]="['/recipe', '2']" class="read-more-btn">View</a>
+        <h4>{{recipe.title}}</h4>
+        <p>Protein: {{recipe.protein}}g | Calories: {{recipe.calories}}kcal</p>
+        <a [routerLink]="['/recipes', recipe.id]"class="read-more-btn">View</a>
       </div>
     </div>
   </div>
