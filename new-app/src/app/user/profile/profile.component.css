@@ -233,3 +233,38 @@ p.error {
 .cancel-btn:hover {
   background: #888;
 }
+
+.no-recipes {
+  text-align: center;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.no-recipes img {
+  width: 120px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.no-recipes h4 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.no-recipes p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.no-recipes .create-btn {
+  background-color: #6a1b9a;
+  color: white;
+  text-decoration: none;
+}
+
+.no-recipes .create-btn:hover {
+  background-color: #4a148c;
+}
