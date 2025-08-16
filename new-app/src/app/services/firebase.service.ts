@@ -29,6 +29,10 @@ export class FirebaseService {
   addRecipe(recipe: Recipe): Observable<{ name: string }> {
   // Firebase ще върне обект с генерирания ID като { name: string }
   return this.http.post<{ name: string }>(`${this.baseUrl}/recipes.json`, recipe);
+  updateRecipe(id: string, recipe: Recipe): Observable<Recipe> {
+    return this.http.put<Recipe>(`${this.baseUrl}/recipes/${id}.json`, recipe);
+  }
+
 }
 
   // // Добавяне на рецепта

@@ -23,6 +23,7 @@
     <div class="recipe-actions" *ngIf="isLoggedIn">
       <button class="btn edit-btn" *ngIf="ownerId === userId">Edit</button>
       <button class="btn delete-btn" *ngIf="ownerId === userId">Delete</button>
+      <button class="btn edit-btn" *ngIf="ownerId === userId" (click)="onEdit()">Edit</button>
     </div>
   </div>
 </div>

@@ -32,4 +32,9 @@ export class RecipeDetailComponent implements OnInit {
       });
     }
   }
+  onEdit() {
+  if (this.recipe?.id) {
+    this.router.navigate([`/recipes/edit/${this.recipe.id}`]);
+  }
+  }
 }
