@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UserService } from 'src/app/services/user.service';
 import { Recipe } from 'src/app/types/Recipe';
+import { RecipeComment } from 'src/app/types/Comment';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -14,6 +15,7 @@ export class RecipeDetailComponent implements OnInit {
   userId = this.userService.user?.uid
   ownerId = this.recipe?.ownerId
   isLoggedIn = this.userService.isLogged
+  newComment: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -63,5 +65,25 @@ export class RecipeDetailComponent implements OnInit {
   });
 }
 
+addComment() {
+  if (!this.newComment.trim() || !this.recipe || !this.userId) return;
+
+  const comment: RecipeComment = {
+    userId: this.userId,
+    username: this.userService.user?.username || 'Anonymous',
+    text: this.newComment,
+    imageUrl:this.userService.user?.imageUrl || 'https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg',
+    createdAt: Date.now()
+  };
+
+  if (!this.recipe.comments) this.recipe.comments = [];
+this.recipe.comments.push(comment);
+
+ if (this.recipe) {
+  this.firebaseService.updateRecipe(this.recipe.id!, this.recipe).subscribe(() => {
+    this.newComment = '';
+  });
+}
+}
 
 }

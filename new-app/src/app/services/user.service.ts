@@ -32,10 +32,10 @@ export class UserService {
           uid: res.user.uid,
           email,
           username,
-          imageUrl: 'https://i.pravatar.cc/150' // дефолтна снимка
+          imageUrl: 'https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg' // дефолтна снимка
         })).pipe(
           map(() => {
-            this.user = { uid: res.user.uid, email, username, imageUrl: 'https://i.pravatar.cc/150' };
+            this.user = { uid: res.user.uid, email, username, imageUrl: 'https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg' };
             localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
             return this.user;
           })
@@ -54,7 +54,7 @@ export class UserService {
               uid: res.user.uid,
               email: data?.email || '',
               username: data?.username || '',
-              imageUrl: data?.imageUrl || 'https://i.pravatar.cc/150'
+              imageUrl: data?.imageUrl || 'https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg'
             };
             localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
             return this.user;

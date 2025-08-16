@@ -1,9 +1,8 @@
 <div class="recipe-detail" *ngIf="recipe">
-  <img
-    src="{{recipe.imageUrl}}"
-    alt="High Protein Chicken"
-    class="recipe-image"
-  />
+  <div class="recipe-image-container">
+    <img src="{{recipe.imageUrl}}" alt="{{recipe.title}}" class="recipe-image" />
+  </div>
+
   <div class="recipe-info">
     <h1>{{ recipe.title }}</h1>
     <p class="macros">
@@ -11,9 +10,7 @@
       Calories: <strong>{{ recipe.calories }}kcal</strong> |
       Preparation time: <strong>{{ recipe.prepTime }} min</strong>
     </p>
-    <p class="description">
-      {{ recipe.description }}
-    </p>
+    <p class="description">{{ recipe.description }}</p>
 
     <h2>Preparation Steps:</h2>
     <ol class="preparation-steps">
@@ -24,5 +21,23 @@
       <button class="btn edit-btn" *ngIf="ownerId === userId" (click)="onEdit()">Edit</button>
       <button class="btn delete-btn" *ngIf="ownerId === userId" (click)="onDelete()">Delete</button>
     </div>
+  </div>
+
+  <div class="comments-section">
+    <h3>Comments</h3>
+    <div *ngIf="recipe.comments" >
+      <div *ngFor="let comment of recipe.comments | slice:-3" class="comment">
+        <p><img src="{{comment.imageUrl}}" alt=""></p>
+        <p><strong>{{ comment.username }}:</strong> {{ comment.text }}</p>
+      </div>
+    </div>
+     <div *ngIf="!recipe.comments" class="no-comment">
+      <p><strong>There is no comments yet!</strong></p>
+    </div>
+    <div *ngIf="isLoggedIn && ownerId !== userId">
+  <textarea [(ngModel)]="newComment" placeholder="Write a comment..." rows="3"></textarea>
+  <button (click)="addComment()">Submit</button>
+</div>
+
   </div>
 </div>

@@ -1,3 +1,5 @@
+import { RecipeComment } from "./Comment";
+
 export interface Recipe {
   id?: string;
   imageUrl:string;
@@ -8,4 +10,5 @@ export interface Recipe {
   description?: string;
   steps?: string[];
   ownerId: string
+  comments?: RecipeComment[];
 }
