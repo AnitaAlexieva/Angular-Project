@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { DOMAINS } from 'src/app/constants';
 import { User } from 'src/app/types/User';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +15,10 @@ export class ProfileComponent implements OnInit {
   showEditMode: boolean = false;
   profileDetails: User = { username: '', email: '', imageUrl: '' };
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private router:Router
+  ) {}
 
   ngOnInit() {
     if (this.userService.user?.uid) {
@@ -48,5 +52,10 @@ export class ProfileComponent implements OnInit {
         this.profileDetails = user;
       });
     }
+  }
+
+  logout(){
+    this.userService.logout()
+    this.router.navigate(['/'])
   }
 }
