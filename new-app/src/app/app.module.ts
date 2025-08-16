@@ -15,9 +15,10 @@ import { AboutComponent } from './pages/about/about.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { UserModule } from './user/user.module';
+import { RecipeEditFormComponent } from './pages/recipe-edit-form/recipe-edit-form.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, RecipesComponent, RecipeDetailComponent, RecipeFormComponent, AboutComponent, ErrorPageComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, RecipesComponent, RecipeDetailComponent, RecipeFormComponent, AboutComponent, ErrorPageComponent, RecipeEditFormComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

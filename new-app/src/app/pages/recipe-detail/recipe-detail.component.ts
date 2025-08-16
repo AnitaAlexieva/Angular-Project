@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UserService } from 'src/app/services/user.service';
 import { Recipe } from 'src/app/types/Recipe';
@@ -17,6 +17,7 @@ export class RecipeDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router:Router,
     private firebaseService: FirebaseService,
     private userService: UserService
   ) { }
@@ -32,9 +33,35 @@ export class RecipeDetailComponent implements OnInit {
       });
     }
   }
+
   onEdit() {
   if (this.recipe?.id) {
     this.router.navigate([`/recipes/edit/${this.recipe.id}`]);
   }
   }
+
+
+ onDelete(): void {
+  if (!this.recipe?.id) {
+    console.error("Recipe ID is missing!");
+    return;
+  }
+
+  const confirmed = window.confirm("Are you sure you want to delete this recipe?");
+  if (!confirmed) {
+    return; 
+  }
+
+  this.firebaseService.deleteRecipe(this.recipe.id).subscribe({
+    next: () => {
+      console.log("Recipe deleted successfully");
+      this.router.navigate(['/recipes']); 
+    },
+    error: (err) => {
+      console.error("Error deleting recipe:", err);
+    }
+  });
+}
+
+
 }

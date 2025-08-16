@@ -33,6 +33,9 @@ export class FirebaseService {
     return this.http.put<Recipe>(`${this.baseUrl}/recipes/${id}.json`, recipe);
   }
 
+  deleteRecipe(id: string): Observable<null> {
+    return this.http.delete<null>(`${this.baseUrl}/recipes/${id}.json`);
+  }
 }
 
   // // Добавяне на рецепта

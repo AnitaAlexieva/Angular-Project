@@ -12,12 +12,14 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { GuestGuard } from './core/guards/guest.guard';
+import { RecipeEditFormComponent } from './pages/recipe-edit-form/recipe-edit-form.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'recipes', component: RecipesComponent },
   { path: 'recipes/add', component: RecipeFormComponent, canActivate:[AuthGuard] },
+  { path: 'recipes/edit/:id', component: RecipeEditFormComponent, canActivate:[AuthGuard] },
   { path: 'recipes/:id', component: RecipeDetailComponent},
   { path: 'about', component: AboutComponent},
   { path: 'login', component: LoginComponent, canActivate:[GuestGuard] },
