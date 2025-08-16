@@ -26,8 +26,23 @@ export class FirebaseService {
     return this.http.put(`${this.baseUrl}/recipes/${id}.json`, recipe);
   }
 
-  // Изтриване на рецепта
-  deleteRecipe(id: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/recipes/${id}.json`);
-  }
+  addRecipe(recipe: Recipe): Observable<{ name: string }> {
+  // Firebase ще върне обект с генерирания ID като { name: string }
+  return this.http.post<{ name: string }>(`${this.baseUrl}/recipes.json`, recipe);
+}
+
+  // // Добавяне на рецепта
+  // addRecipe(recipe: Recipe): Observable<any> {
+  //   return this.http.post(`${this.baseUrl}/recipes.json`, recipe);
+  // }
+
+  // // Редактиране на рецепта
+  // updateRecipe(id: string, recipe: Recipe): Observable<any> {
+  //   return this.http.put(`${this.baseUrl}/recipes/${id}.json`, recipe);
+  // }
+
+  // // Изтриване на рецепта
+  // deleteRecipe(id: string): Observable<any> {
+  //   return this.http.delete(`${this.baseUrl}/recipes/${id}.json`);
+  // }
 }

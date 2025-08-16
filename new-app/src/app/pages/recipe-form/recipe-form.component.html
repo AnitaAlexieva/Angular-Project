@@ -1,5 +1,5 @@
-<form #form="ngForm"  (ngSubmit)="addTheme(form)" class="recipe-form">
-  <h2>Add / Edit Recipe</h2>
+<form *ngIf="!onEditMode" #form="ngForm"  (ngSubmit)="addTheme(form)" class="recipe-form">
+  <h2>Add Recipe</h2>
   <div class="form-row">
     <div class="form-group">
       <label for="name">Recipe Name</label>
@@ -42,13 +42,119 @@
 
     <div class="form-group">
       <label for="prepTime">Preparation Time (minutes)</label>
-      <input type="text" id="prepTime" name="prepTime" placeholder="Preparation time in minutes"  ngModel #inputPrepTime="ngModel" required minlength="4"/>
+      <input type="number" id="prepTime" name="prepTime" placeholder="Preparation time in minutes"  ngModel #inputPrepTime="ngModel" required min="5"/>
       <ng-container *ngIf="inputPrepTime.touched">
         <p *ngIf="inputPrepTime.errors?.['required']" class="error">
           Preparation time is required!
         </p>
         <p class="error" *ngIf="inputPrepTime.errors?.['minlength']">
-          Preparation time must be at least 4 characters!
+          Preparation time must be at least 5 minutes!
+        </p>
+      </ng-container>
+    </div>
+
+
+  </div>
+  <div class="form-row single-col">
+    <div class="form-group">
+      <label for="imageUrl">Image Url</label>
+      <input id="imageUrl" name="imageUrl" placeholder="Image Url" rows="3"  ngModel #inputimageUrl="ngModel" required minlength="10"/>
+    </div>
+
+    <ng-container *ngIf="inputimageUrl.touched">
+      <p *ngIf="inputimageUrl.errors?.['required']" class="error">
+        Image Url is required!
+      </p>
+    </ng-container>
+
+  </div>
+  <div class="form-row single-col">
+    <div class="form-group">
+      <label for="description">Short Description</label>
+      <textarea id="description" name="description" placeholder="Brief description" rows="3"  ngModel #inputDescription="ngModel" required minlength="10"></textarea>
+    </div>
+
+    <ng-container *ngIf="inputDescription.touched">
+      <p *ngIf="inputDescription.errors?.['required']" class="error">
+        Description is required!
+      </p>
+      <p class="error" *ngIf="inputDescription.errors?.['minlength']">
+        Description must be at least 10 characters!
+      </p>
+    </ng-container>
+
+  </div>
+
+  <div class="form-row single-col">
+    <div class="form-group">
+      <label for="preparation">Preparation Steps</label>
+      <textarea id="preparation" name="preparation" placeholder="Step by step instructions" rows="5"  ngModel #inputPrepSteps="ngModel" required minlength="10"></textarea>
+    </div>
+     <ng-container *ngIf="inputPrepSteps.touched">
+      <p *ngIf="inputPrepSteps.errors?.['required']" class="error">
+        Preparation steps is required!
+      </p>
+      <p class="error" *ngIf="inputPrepSteps.errors?.['minlength']">
+        Preparation steps must be at least 10 characters!
+      </p>
+    </ng-container>
+
+  </div>
+
+  <button class="submit-btn" [disabled]="form.invalid" [style]="{backgroundColor:form.invalid ? 'grey' : '#ae44c0'}">Post Recipe</button>
+</form>
+
+<form *ngIf="onEditMode" #form="ngForm"  (ngSubmit)="addTheme(form)" class="recipe-form">
+  <h2>Edit Recipe</h2>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="name">Recipe Name</label>
+      <input type="text" id="title" name="title" placeholder="Enter recipe name" ngModel #inputTitle="ngModel" required minlength="5" />
+      <ng-container *ngIf="inputTitle.touched">
+       <p *ngIf="inputTitle.errors?.['required']" class="error">
+         Title is required!
+       </p>
+       <p class="error" *ngIf="inputTitle.errors?.['minlength']">
+         Title must be at least 5 characters!
+       </p>
+     </ng-container>
+    </div>
+
+
+    <div class="form-group">
+      <label for="protein">Protein (g)</label>
+      <input type="number" id="protein" name="protein" placeholder="Amount of protein" ngModel #inputProtein="ngModel" required />
+      <ng-container *ngIf="inputProtein.touched">
+          <p *ngIf="inputProtein.errors?.['required']" class="error">
+            Protein is required!
+          </p>
+        </ng-container>
+    </div>
+  </div>
+
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="calories">Calories (kcal)</label>
+      <input type="number" id="calories" name="calories" placeholder="Calories count"  ngModel #inputCalories="ngModel" required />
+      <ng-container *ngIf="inputCalories.touched">
+        <p *ngIf="inputCalories.errors?.['required']" class="error">
+          Calories is required!
+        </p>
+      </ng-container>
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="prepTime">Preparation Time (minutes)</label>
+      <input type="number" id="prepTime" name="prepTime" placeholder="Preparation time in minutes"  ngModel #inputPrepTime="ngModel" required min="5"/>
+      <ng-container *ngIf="inputPrepTime.touched">
+        <p *ngIf="inputPrepTime.errors?.['required']" class="error">
+          Preparation time is required!
+        </p>
+        <p class="error" *ngIf="inputPrepTime.errors?.['minlength']">
+          Preparation time must be at least 5 minutes!
         </p>
       </ng-container>
     </div>
