@@ -16,9 +16,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { UserModule } from './user/user.module';
 import { RecipeEditFormComponent } from './pages/recipe-edit-form/recipe-edit-form.component';
+import { CheatMealComponent } from './pages/cheat-meal/cheat-meal.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, RecipesComponent, RecipeDetailComponent, RecipeFormComponent, AboutComponent, ErrorPageComponent, RecipeEditFormComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, RecipesComponent, RecipeDetailComponent, RecipeFormComponent, AboutComponent, ErrorPageComponent, RecipeEditFormComponent, CheatMealComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

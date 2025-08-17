@@ -13,11 +13,13 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { GuestGuard } from './core/guards/guest.guard';
 import { RecipeEditFormComponent } from './pages/recipe-edit-form/recipe-edit-form.component';
+import { CheatMealComponent } from './pages/cheat-meal/cheat-meal.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'recipes', component: RecipesComponent },
+  { path: 'cheat-meal', component: CheatMealComponent },
   { path: 'recipes/add', component: RecipeFormComponent, canActivate:[AuthGuard] },
   { path: 'recipes/edit/:id', component: RecipeEditFormComponent, canActivate:[AuthGuard] },
   { path: 'recipes/:id', component: RecipeDetailComponent},

@@ -1,0 +1,18 @@
+<div class="cheat-meal">
+  <h1>Cheat Meals</h1>
+  
+  <form (submit)="onSubmit($event)" class="category-form">
+    <input type="text" placeholder="Enter category" [(ngModel)]="category" name="category" />
+    <button type="submit">Search</button>
+    <button type="button" (click)="takeRandomMeal()">Random Meal</button>
+  </form>
+
+  <div *ngIf="loading" class="loading">Loading...</div>
+
+  <div class="meals-grid">
+    <div *ngFor="let meal of meals" class="meal-card">
+      <img [src]="meal.strMealThumb" [alt]="meal.strMeal" />
+      <h3>{{ meal.strMeal }}</h3>
+    </div>
+  </div>
+</div>

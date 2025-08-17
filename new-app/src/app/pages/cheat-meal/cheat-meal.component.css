@@ -1,0 +1,80 @@
+.cheat-meal {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #8e44ad; /* лилаво заглавие */
+}
+
+.category-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.category-form input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 220px; /* малко по-широко */
+}
+
+.category-form button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #9b59b6; /* лилаво за бутоните */
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.category-form button:hover {
+  background-color: #8e44ad; /* по-тъмно лилаво при hover */
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+}
+
+.meals-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 75px;
+}
+
+.meal-card {
+  width: 220px; /* по-широка карта */
+  background: white;
+  /* border:2px solid #9b59b6; */
+  border-radius: 12px;
+  box-shadow: 0 20px 8px rgba(89, 14, 84, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.meal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.meal-card img {
+  width: 100%;
+  height: 160px; /* малко по-висока за по-добър баланс с по-широката карта */
+  object-fit: cover;
+}
+
+.meal-card h3 {
+  padding: 10px;
+  font-size: 16px;
+  color: #6c3483; /* тъмно лилаво за текста на името */
+}
