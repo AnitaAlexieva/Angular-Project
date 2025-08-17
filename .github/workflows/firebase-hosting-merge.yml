@@ -21,3 +21,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROJECT_ANGULAR_48822 }}
           channelId: live
           projectId: project-angular-48822
+          entryPoint: new-app
