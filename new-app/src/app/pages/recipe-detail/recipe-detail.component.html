@@ -28,7 +28,7 @@
     <div *ngIf="recipe.comments" >
       <div *ngFor="let comment of recipe.comments | slice:-3" class="comment">
         <p><img src="{{comment.imageUrl}}" alt=""></p>
-        <p><strong>{{ comment.username }}:</strong> {{ comment.text }}</p>
+        <p><strong>{{ comment.username }}:</strong> {{ comment.text | sliceText : 25 }}</p>
       </div>
     </div>
      <div *ngIf="!recipe.comments" class="no-comment">

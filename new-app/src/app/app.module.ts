@@ -17,6 +17,7 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { UserModule } from './user/user.module';
 import { RecipeEditFormComponent } from './pages/recipe-edit-form/recipe-edit-form.component';
 import { CheatMealComponent } from './pages/cheat-meal/cheat-meal.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, RecipesComponent, RecipeDetailComponent, RecipeFormComponent, AboutComponent, ErrorPageComponent, RecipeEditFormComponent, CheatMealComponent],
@@ -26,7 +27,8 @@ import { CheatMealComponent } from './pages/cheat-meal/cheat-meal.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
-    UserModule
+    UserModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
