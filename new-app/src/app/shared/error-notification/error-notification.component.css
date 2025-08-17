@@ -1,0 +1,12 @@
+.error-alert {
+      position: fixed;
+      top: 120px;
+      right: 20px;
+      background-color: #ffd6e8;
+      color: #9b004f;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }

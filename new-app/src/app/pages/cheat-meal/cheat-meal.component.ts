@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Meal, MealDBResponse } from 'src/app/types/CheatMeal';
+import { ErrorService } from 'src/app/shared/error-notification/error.service';
 
 
 @Component({
@@ -13,7 +14,10 @@ export class CheatMealComponent implements OnInit {
   loading = false;
   category: string = 'Chicken'; // първоначално зареждане за Chicken
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private errorService:ErrorService
+  ) {}
 
   ngOnInit(): void {
     this.takeByCategory(); // при зареждане показваме всички рецепти за Chicken
@@ -29,6 +33,7 @@ export class CheatMealComponent implements OnInit {
         },
         error: () => {
           console.error('Error fetching random meal');
+          this.errorService.showError('Error fetching random meal')
           this.loading = false;
         }
       });
@@ -45,6 +50,7 @@ export class CheatMealComponent implements OnInit {
         },
         error: () => {
           console.error('Error fetching meals by category');
+          this.errorService.showError('Error fetching meals by category')
           this.loading = false;
         }
       });

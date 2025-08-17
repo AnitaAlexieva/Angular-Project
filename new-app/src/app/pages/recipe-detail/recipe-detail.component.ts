@@ -4,6 +4,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 import { UserService } from 'src/app/services/user.service';
 import { Recipe } from 'src/app/types/Recipe';
 import { RecipeComment } from 'src/app/types/Comment';
+import { ErrorService } from 'src/app/shared/error-notification/error.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -21,7 +22,8 @@ export class RecipeDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router:Router,
     private firebaseService: FirebaseService,
-    private userService: UserService
+    private userService: UserService,
+    private errorService: ErrorService
   ) { }
 
   ngOnInit() {
@@ -45,7 +47,6 @@ export class RecipeDetailComponent implements OnInit {
 
  onDelete(): void {
   if (!this.recipe?.id) {
-    console.error("Recipe ID is missing!");
     return;
   }
 
@@ -61,6 +62,7 @@ export class RecipeDetailComponent implements OnInit {
     },
     error: (err) => {
       console.error("Error deleting recipe:", err);
+      this.errorService.showError('Error deleting recipe')
     }
   });
 }
@@ -80,9 +82,14 @@ addComment() {
 this.recipe.comments.push(comment);
 
  if (this.recipe) {
-  this.firebaseService.updateRecipe(this.recipe.id!, this.recipe).subscribe(() => {
-    this.newComment = '';
-  });
+ this.firebaseService.updateRecipe(this.recipe.id!, this.recipe).subscribe({
+      next: () => {
+        this.newComment = '';
+      },
+      error: () => {
+        this.errorService.showError('Failed to add comment. Please try again.');
+      }
+    });
 }
 }
 

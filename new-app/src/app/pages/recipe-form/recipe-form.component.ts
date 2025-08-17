@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UserService } from 'src/app/services/user.service';
+import { ErrorService } from 'src/app/shared/error-notification/error.service';
 import { Recipe } from 'src/app/types/Recipe';
 
 @Component({
@@ -17,7 +18,9 @@ export class RecipeFormComponent {
   constructor(
     private firebaseService: FirebaseService,
     private userService:UserService,
-    private router:Router
+    private router:Router,
+    private errorService: ErrorService
+  
   ){}
 
 addTheme(form: NgForm) {
@@ -56,12 +59,9 @@ addTheme(form: NgForm) {
     },
     error: (err) => {
       console.error('Error adding recipe:', err);
+      this.errorService.showError('Error adding recipe')
     }
   });
 }
-
-  showEdit(){
-    this.onEditMode=true
-  }
 
 }

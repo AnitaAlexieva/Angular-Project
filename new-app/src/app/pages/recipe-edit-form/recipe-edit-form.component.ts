@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UserService } from 'src/app/services/user.service';
 import { Recipe } from 'src/app/types/Recipe';
+import { ErrorService } from 'src/app/shared/error-notification/error.service';
 
 @Component({
   selector: 'app-recipe-edit-form',
@@ -20,7 +21,8 @@ export class RecipeEditFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private firebaseService: FirebaseService,
-    private userService: UserService
+    private userService: UserService,
+    private errorService: ErrorService
   ) {}
 
   ngOnInit(): void {
@@ -48,7 +50,8 @@ export class RecipeEditFormComponent implements OnInit {
       description: form.value.description,
       steps: stepsArray,
       imageUrl: form.value.imageUrl,
-      ownerId: this.user
+      ownerId: this.user,
+      comments: this.recipe.comments || []
     };
 
     this.firebaseService.updateRecipe(this.recipeId, updatedRecipe).subscribe({
@@ -56,7 +59,10 @@ export class RecipeEditFormComponent implements OnInit {
         console.log('Recipe updated successfully');
         this.router.navigate(['/recipes', this.recipeId]);
       },
-      error: (err) => console.error('Error updating recipe:', err)
+      error: (err) => {
+        console.error('Error updating recipe:', err)
+        this.errorService.showError('Error updating recipe')
+      }
     });
   }
 }
