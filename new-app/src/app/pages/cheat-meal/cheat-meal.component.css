@@ -6,7 +6,7 @@
 h1 {
   text-align: center;
   margin-bottom: 20px;
-  color: #8e44ad; /* лилаво заглавие */
+  color: #8e44ad; 
 }
 
 .category-form {
@@ -20,21 +20,21 @@ h1 {
   padding: 8px 12px;
   border-radius: 6px;
   border: 1px solid #ccc;
-  width: 220px; /* малко по-широко */
+  width: 220px; 
 }
 
 .category-form button {
   padding: 8px 16px;
   border: none;
   border-radius: 6px;
-  background-color: #9b59b6; /* лилаво за бутоните */
+  background-color: #9b59b6; 
   color: white;
   cursor: pointer;
   transition: background 0.3s;
 }
 
 .category-form button:hover {
-  background-color: #8e44ad; /* по-тъмно лилаво при hover */
+  background-color: #8e44ad; 
 }
 
 .loading {
@@ -52,9 +52,8 @@ h1 {
 }
 
 .meal-card {
-  width: 220px; /* по-широка карта */
+  width: 220px; 
   background: white;
-  /* border:2px solid #9b59b6; */
   border-radius: 12px;
   box-shadow: 0 20px 8px rgba(89, 14, 84, 0.1);
   overflow: hidden;
@@ -69,25 +68,25 @@ h1 {
 
 .meal-card img {
   width: 100%;
-  height: 160px; /* малко по-висока за по-добър баланс с по-широката карта */
+  height: 160px; 
   object-fit: cover;
 }
 
 .meal-card h3 {
   padding: 10px;
   font-size: 16px;
-  color: #6c3483; /* тъмно лилаво за текста на името */
+  color: #6c3483; 
 }
 .no-results {
   text-align: center;
   margin-top: 4rem;
   font-size: 1.2rem;
   font-weight: 500;
-  color: #6b21a8; /* purple shade */
+  color: #6b21a8; 
   background: #f3e8ff;
   padding: 1rem 2rem;
   border-radius: 12px;
   display: flex;
-  justify-content: center;  /* centers horizontally */
-  align-items: center;      /* centers vertically */
+  justify-content: center;  
+  align-items: center;     
   min-height: 200px;   }

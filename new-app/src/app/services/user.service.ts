@@ -73,7 +73,6 @@ export class UserService {
   updateUser(uid: string, updatedData: Partial<User>): Observable<void> {
     return from(update(ref(db, 'users/' + uid), updatedData)).pipe(
       map(() => {
-        // Обновяваме и локално
         this.user = { ...this.user, ...updatedData } as User;
         localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
       })

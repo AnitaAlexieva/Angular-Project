@@ -68,7 +68,6 @@ export class ProfileComponent implements OnInit {
   cancelEdit(event: Event) {
     event.preventDefault();
     this.showEditMode = false;
-    // връщаме данните от базата
      if (this.userService.user?.uid) {
       this.userService.getUserData(this.userService.user.uid).subscribe({
         next: (user) => this.profileDetails = user,

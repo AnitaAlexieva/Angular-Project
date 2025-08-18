@@ -12,11 +12,9 @@ export class RecipesComponent implements OnInit {
   recipes: Recipe[] = [];
   isLoading:boolean = true;
 
-  // Полета за формата
   newName: string = '';
   newProtein: number | null = null;
 
-  // За редакция
   editId: string | null = null;
 
   constructor(
@@ -36,10 +34,9 @@ export class RecipesComponent implements OnInit {
     this.firebaseService.getRecipes().subscribe({
       next: (res) => {
         if (res) {
-          // res е Record<string, Recipe>
           this.recipes = Object.keys(res).map(key => ({
-            id: key,           // добавяме id-то
-            ...res[key]        // останалите данни на рецептата
+            id: key,          
+            ...res[key]        
           }));
         } else {
           this.recipes = [];

@@ -85,9 +85,3 @@ p.error {
   background-color: #4a148c;
 }
 
-/* Responsive for smaller screens */
-@media (max-width: 600px) {
-  .form-row {
-    flex-direction: column;
-  }
-}

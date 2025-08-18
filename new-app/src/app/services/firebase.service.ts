@@ -22,7 +22,6 @@ export class FirebaseService {
 
 
   addRecipe(recipe: Recipe): Observable<{ name: string }> {
-    // Firebase ще върне обект с генерирания ID като { name: string }
     return this.http.post<{ name: string }>(`${this.baseUrl}/recipes.json`, recipe);
   }
   updateRecipe(id: string, recipe: Recipe): Observable<Recipe> {
@@ -43,7 +42,6 @@ export class FirebaseService {
         }
       }
 
-      // филтрираме по ownerId
       return recipes.filter(r => r.ownerId === userId);
     })
   );

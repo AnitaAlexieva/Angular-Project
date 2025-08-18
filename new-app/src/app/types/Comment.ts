@@ -3,5 +3,4 @@ export interface RecipeComment {
   username: string;
   text: string;
   imageUrl:string;
-  createdAt: number;
 }

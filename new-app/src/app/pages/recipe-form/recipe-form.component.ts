@@ -33,13 +33,11 @@ addTheme(form: NgForm) {
     return;
   }
 
-  // Взимаме текста от полето за подготовка и го разделяме по запетайка
   const preparationStr: string = form.value.preparation;
   const stepsArray: string[] = preparationStr
-    .split(',')                // разделяне на запетайки
-    .map(step => step.trim())  // премахва излишните интервали
-    .filter(step => step);     // премахва празните стойности
-
+    .split(',')               
+    .map(step => step.trim()) 
+    .filter(step => step);    
   const newRecipe: Recipe = {
     title: form.value.title,
     protein: form.value.protein,
@@ -55,7 +53,7 @@ addTheme(form: NgForm) {
     next: (res) => {
       console.log('Recipe added successfully', res);
       form.resetForm();
-      this.router.navigate(['/recipes']); // навигация към списъка с рецепти
+      this.router.navigate(['/recipes']); 
     },
     error: (err) => {
       console.error('Error adding recipe:', err);

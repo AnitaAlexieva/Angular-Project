@@ -12,7 +12,7 @@ import { ErrorService } from 'src/app/shared/error-notification/error.service';
 export class CheatMealComponent implements OnInit {
   meals: Meal[] = [];
   loading = false;
-  category: string = 'Chicken'; // първоначално зареждане за Chicken
+  category: string = 'Chicken'; 
 
   constructor(
     private http: HttpClient,
@@ -20,7 +20,7 @@ export class CheatMealComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.takeByCategory(); // при зареждане показваме всички рецепти за Chicken
+    this.takeByCategory();
   }
 
   takeRandomMeal() {
