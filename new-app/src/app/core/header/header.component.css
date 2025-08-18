@@ -7,7 +7,7 @@ nav.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f0e4f1;
+    background-color:#ebc5ee;
 }
 .guestNav,
 .userNav{

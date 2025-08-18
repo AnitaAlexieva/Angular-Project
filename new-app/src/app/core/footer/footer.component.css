@@ -1,7 +1,7 @@
 
 .app-footer {
-  background-color: #333;
-  color: #fff;
+  background-color:#ebc5ee;
+  color: #0e0e0e;
   padding: 15px 0;
   text-align: center;
   font-family: Arial, sans-serif;
@@ -21,7 +21,7 @@
 }
 
 .footer-content a {
-  color: #ddd;
+  color: #0c0c0c;
   text-decoration: none;
   margin: 0 10px;
 }

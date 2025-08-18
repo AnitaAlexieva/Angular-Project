@@ -53,7 +53,7 @@ h1 {
 
 .meal-card {
   width: 220px; 
-  background: white;
+  background: rgb(230, 211, 226);
   border-radius: 12px;
   box-shadow: 0 20px 8px rgba(89, 14, 84, 0.1);
   overflow: hidden;

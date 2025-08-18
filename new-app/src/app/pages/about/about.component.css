@@ -1,7 +1,7 @@
 .about {
   padding: 1rem 10%;
-  background-color: #fdf7ff; /* леко лилав фон */
-  color: #333;
+  background: #fbfbfb;
+  color: #232323;
 }
 
 .about-header {
@@ -11,12 +11,12 @@
 
 .about-header h1 {
   font-size: 3rem;
-  color: #501138; /* розово */
+  color: #501138; 
 }
 
 .about-header p {
   font-size: 1.2rem;
-  color: #666;
+  color: #474646;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -34,7 +34,7 @@
 
 .about-text h2 {
   font-size: 2rem;
-  color:#ae6f6f;
+  color:#501138; 
   margin-bottom: 1rem;
 }
 

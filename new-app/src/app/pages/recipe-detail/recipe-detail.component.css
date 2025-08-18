@@ -5,6 +5,7 @@
   margin: 2rem auto;
   font-family: 'Poppins', sans-serif;
   color: #4a148c;
+  margin-bottom: 100px;
 }
 
 .recipe-image-container {
@@ -78,7 +79,7 @@
 
 .no-comment{
   justify-content: center;
-  background-color:#efe3e3;
+  background-color:#efc7e6;
   padding: 0.2rem 0.8rem;
   border-radius: 12px;
   display: flex;
