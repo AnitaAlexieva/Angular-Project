@@ -10,6 +10,7 @@ import { Recipe } from 'src/app/types/Recipe';
 })
 export class RecipesComponent implements OnInit {
   recipes: Recipe[] = [];
+  isLoading:boolean = true;
 
   // Полета за формата
   newName: string = '';
@@ -25,6 +26,10 @@ export class RecipesComponent implements OnInit {
 
   ngOnInit() {
     this.loadRecipes();
+
+    setTimeout(() => {
+      this.isLoading=false;
+    }, 500);
   }
 
  loadRecipes() {

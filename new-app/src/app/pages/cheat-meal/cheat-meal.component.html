@@ -1,3 +1,5 @@
+
+
 <div class="cheat-meal">
   <h1>Cheat Meals</h1>
   
@@ -6,10 +8,12 @@
     <button type="submit">Search</button>
     <button type="button" (click)="takeRandomMeal()">Random Meal</button>
   </form>
+  
+  <div *ngIf="loading" class="loading">
+    <app-loader/>
+  </div>
 
-  <div *ngIf="loading" class="loading">Loading...</div>
-
-   <div *ngIf="!loading && meals?.length === 0" class="no-results">
+  <div *ngIf="!loading && meals?.length === 0" class="no-results">
     <p>No recipes found for this category.</p>
   </div>
 

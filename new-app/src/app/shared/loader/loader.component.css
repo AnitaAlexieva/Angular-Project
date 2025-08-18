@@ -1,0 +1,22 @@
+.loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px; /* колко пространство заема */
+}
+
+.loader {
+  border: 6px solid #f3f3f3;      /* светъл бордер */
+  border-top: 6px solid #6a0dad;  /* лилав акцент */
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+  box-shadow: 0 0 10px rgba(106, 13, 173, 0.5);
+  margin:150px 0 250px 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

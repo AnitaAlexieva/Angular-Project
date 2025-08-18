@@ -1,6 +1,9 @@
 <h1>All Protein Recipes</h1>
 
-<div class="recipe-list">
+<div *ngIf="isLoading">
+  <app-loader/>
+</div>
+<div *ngIf="!isLoading" class="recipe-list">
   <div class="recipe-card" *ngFor="let recipe of recipes">
     <img src="{{recipe.imageUrl}}" alt="High Protein Meal" />
     <div class="recipe-content">
