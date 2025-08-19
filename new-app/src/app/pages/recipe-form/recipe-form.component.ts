@@ -12,7 +12,6 @@ import { Recipe } from 'src/app/types/Recipe';
   styleUrls: ['./recipe-form.component.css']
 })
 export class RecipeFormComponent {
-  onEditMode:boolean = false;
   user = this.userService.user?.uid;
 
   constructor(

@@ -12,11 +12,6 @@ export class RecipesComponent implements OnInit {
   recipes: Recipe[] = [];
   isLoading:boolean = true;
 
-  newName: string = '';
-  newProtein: number | null = null;
-
-  editId: string | null = null;
-
   constructor(
     private firebaseService: FirebaseService,
     private errorService:ErrorService
