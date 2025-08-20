@@ -7,8 +7,10 @@ Users can register to access their personal recipe dashboard, interact with thei
 
 [🌐 Live Demo](https://project-angular-48822.web.app/)
 
-
 <img width="1895" height="904" alt="Екранна снимка 2025-08-20 142834" src="https://github.com/user-attachments/assets/b92e0bb5-d3e1-4aa6-8034-090e80959627" />
+
+<img width="1896" height="826" alt="Екранна снимка 2025-08-20 151438" src="https://github.com/user-attachments/assets/dd7df66f-481d-463b-af3c-4e0e974dcd9b" />
+
 
 
 ## Features
