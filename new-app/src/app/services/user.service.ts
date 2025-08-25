@@ -32,7 +32,7 @@ export class UserService {
           uid: res.user.uid,
           email,
           username,
-          imageUrl: 'https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg' // дефолтна снимка
+          imageUrl: 'https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg' 
         })).pipe(
           map(() => {
             this.user = { uid: res.user.uid, email, username, imageUrl: 'https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg' };
